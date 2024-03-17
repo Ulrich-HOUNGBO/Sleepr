@@ -1,0 +1,37 @@
+services:
+  reservations:
+    build:
+      context: apps/reservations
+      dockerfile: Dockerfile
+      target: development
+    command: pnpm run start:dev reservations
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:usr/src/app
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+  auth:
+    build:
+      context: apps/auth
+      dockerfile: Dockerfile
+      target: development
+    command: pnpm run start:dev auth
+    ports:
+      - "3001:3001"
+    volumes:
+        - .:usr/src/app
+    environment:
+        - NODE_ENV=development
+        - PORT=3001
+  mongoo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_DATABASE=reservation
