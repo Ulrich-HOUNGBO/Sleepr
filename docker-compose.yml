@@ -29,5 +29,5 @@ services:
     environment:
         - NODE_ENV=development
         - PORT=3001
-  mongoo:
+  mongo:
     image: mongo:latest
