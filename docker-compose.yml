@@ -31,11 +31,3 @@ services:
         - PORT=3001
   mongoo:
     image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./data:/data/db
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=admin
-      - MONGO_INITDB_DATABASE=reservation
