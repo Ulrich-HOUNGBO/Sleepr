@@ -9,7 +9,6 @@ import {
 } from './models/reservation.schema';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
-import * as path from 'path';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
@@ -21,15 +20,17 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     LoggerModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: path.resolve(__dirname, '../../.env'),
+      envFilePath: './apps/reservations/.env',
       validationSchema: Joi.object({
         MONGODB_URI: Joi.string().required(),
         PORT: Joi.number().required(),
+        AUTH_HOST: Joi.string().required(),
+        AUTH_PORT: Joi.number().required(),
       }),
     }),
     ClientsModule.registerAsync([
       {
-        name: 'AUTH_SERVICE',
+        name: AUTH_SERVICE,
         useFactory: (configService: ConfigService) => ({
           transport: Transport.TCP,
           options: {
