@@ -1,7 +1,7 @@
 services:
   reservations:
     build:
-      context: apps/reservations
+      context: ./apps/reservations
       dockerfile: Dockerfile
       target: development
     command: pnpm run start:dev reservations
@@ -16,7 +16,7 @@ services:
       - PORT=3000
   auth:
     build:
-      context: apps/auth
+      context: ./apps/auth
       dockerfile: Dockerfile
       target: development
     command: pnpm run start:dev auth
