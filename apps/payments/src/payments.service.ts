@@ -28,7 +28,10 @@ export class PaymentsService {
       currency: 'usd',
     });
 
-    this.notificationService.emit('notifications.notify_email', { email });
+    this.notificationService.emit('notifications.notify_email', {
+      email,
+      text: `Charge of $${amount} was successful `,
+    });
 
     return charge;
   }
