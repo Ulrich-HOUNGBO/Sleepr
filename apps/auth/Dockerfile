@@ -1,4 +1,4 @@
-FROM node:alpine As development
+FROM node:alpine AS development
 
 WORKDIR /usr/src/app
 
@@ -9,6 +9,8 @@ COPY nest-cli.json nest-cli.json
 
 RUN npm install -g pnpm
 
+RUN npm install -g @nestjs/cli
+
 RUN pnpm install
 
 COPY apps/auth apps/auth
@@ -18,7 +20,7 @@ RUN cd apps/auth && pnpm install
 
 RUN pnpm run build auth
 
-FROM node:alpine as production
+FROM node:alpine AS production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
@@ -27,6 +29,8 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+
+RUN npm install -g @nestjs/cli
 
 RUN npm install -g pnpm
 

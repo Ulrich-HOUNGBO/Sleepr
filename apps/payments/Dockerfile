@@ -9,6 +9,8 @@ COPY nest-cli.json nest-cli.json
 
 RUN npm install -g pnpm
 
+RUN npm install -g @nestjs/cli
+
 RUN pnpm install
 
 COPY apps/payments apps/payments
@@ -27,6 +29,8 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 
 RUN npm install -g pnpm
+
+RUN npm install -g @nestjs/cli
 
 RUN pnpm install --prod
 
