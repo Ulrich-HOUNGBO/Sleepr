@@ -12,6 +12,10 @@ import { LoggerModule } from '@app/common';
       envFilePath: './apps/notifications/.env',
       validationSchema: Joi.object({
         PORT: Joi.number().required(),
+        SMTP_USER: Joi.string().required(),
+        OAUTH_CLIENT_ID: Joi.string().required(),
+        OAUTH_CLIENT_SECRET: Joi.string().required(),
+        OAUTH_REFRESH_TOKEN: Joi.string().required(),
       }),
     }),
     LoggerModule,
