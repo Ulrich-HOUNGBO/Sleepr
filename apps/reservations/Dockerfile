@@ -9,8 +9,6 @@ COPY nest-cli.json nest-cli.json
 
 RUN npm install -g pnpm
 
-RUN npm install -g @nestjs/cli
-
 RUN pnpm install
 
 COPY apps/reservations apps/reservations
@@ -29,8 +27,6 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 
 RUN npm install -g pnpm
-
-RUN npm install -g @nestjs/cli
 
 RUN pnpm install --prod
 
