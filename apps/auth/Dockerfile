@@ -9,7 +9,6 @@ COPY nest-cli.json nest-cli.json
 
 RUN npm install -g pnpm
 
-RUN npm install -g @nestjs/cli
 
 RUN pnpm install
 
