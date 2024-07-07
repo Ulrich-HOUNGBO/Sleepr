@@ -51,3 +51,7 @@ services:
       - .:/usr/src/app
   mongo:
     image: mongo:latest
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
